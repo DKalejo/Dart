@@ -42,6 +42,7 @@ class MyAppState extends ChangeNotifier {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
   @override
   // Widget constructor
   Widget build(BuildContext context) {
@@ -51,20 +52,57 @@ class MyHomePage extends StatelessWidget {
     var pair = appState.current;
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('A random:'),
-            BigCard(pair: pair),
-            ElevatedButton(
-              onPressed: () {
-                appState.getNext();
-              },
-              child: Text('Next'),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 120,
+            color: Color.fromARGB(255, 1, 238, 255),
+            child: Center(child: Text("AppBar")),
+          ),
+          Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                Text('A random:'),
+                BigCard(pair: pair),
+                ElevatedButton(
+                  onPressed: () {
+                    appState.getNext();
+                  },
+                  child: Text('Next'),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(width: 50, height: 50, color: Color.fromRGBO(2, 240, 2, 1)),
+              Container(width: 50, height: 50, color: Color.fromRGBO(255, 50, 40, 1)),
+              Container(width: 50, height: 50, color: Color.fromRGBO(255, 127, 42, 1)),
+            ],
+          ),
+          SizedBox(height: 50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(width: 150, height: 60, color: Color.fromRGBO(146, 0, 234, 1)),
+              SizedBox(width: 20),
+              Container(width: 150, height: 60, color: Color.fromRGBO(0, 160, 234, 1)),
+            ],
+          ),
+          SizedBox(height: 80),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(width: 50, height: 120, color: Color.fromRGBO(231, 170, 3, 1)),
+              Container(width: 50, height: 50, color: Color.fromRGBO(255, 50, 40, 1)),
+              Container(width: 50, height: 120, color: Color.fromRGBO(255, 127, 42, 1)),
+            ],
+          ),
+        ],
       ),
     );
   }
